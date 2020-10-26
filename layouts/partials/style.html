@@ -1,0 +1,7 @@
+{{ if .Context.Site.IsServer }}
+	{{ $style := resources.Get .Style | toCSS }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{ else }}
+	{{ $style := resources.Get .Style | toCSS | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+{{ end }}

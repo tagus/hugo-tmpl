@@ -1,0 +1,7 @@
+{{ if .Context.Site.IsServer }}
+    {{ $js := resources.Get .Script }}
+    <script src="{{ $js.RelPermalink }}"></script>
+{{ else }}
+    {{ $js := resources.Get .Script | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}

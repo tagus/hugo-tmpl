@@ -1,0 +1,16 @@
+# hugo generated artifacts
+public/
+resources/
+assets/js/**/*.js
+
+# OS Files
+.DS_Store
+
+# js files
+node_modules
+yarn-error.log
+artifacts/
+dist/
+
+# secrets
+.keys

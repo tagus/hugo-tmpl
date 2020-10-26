@@ -1,0 +1,46 @@
+{
+	"name": "hugo-tmpl",
+	"version": "0.0.1",
+	"description": "template project structure for hugo",
+	"main": "index.js",
+	"repository": "https://github.com/sugatpoudel/hugo-tmpl.git",
+	"license": "MIT",
+	"scripts": {
+		"build": "webpack --config webpack.prod.js",
+		"build:dev": "webpack --config webpack.dev.js",
+		"watch": "yarn build:dev --watch",
+		"test": "yarn jest",
+		"lint": "eslint ."
+	},
+	"devDependencies": {
+		"@babel/core": "^7.9.0",
+		"@babel/preset-env": "^7.9.5",
+		"@babel/preset-react": "^7.9.4",
+		"babel-loader": "^8.0.6",
+		"enzyme": "^3.9.0",
+		"enzyme-adapter-react-16": "^1.15.1",
+		"eslint": "^7.3.0",
+		"eslint-config-standard": "^14.1.1",
+		"eslint-plugin-import": "^2.21.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-react": "^7.20.0",
+		"eslint-plugin-standard": "^4.0.1",
+		"jest": "^24.9.0",
+		"jest-enzyme": "^7.1.2",
+		"jest-junit": "^10.0.0",
+		"prop-types": "^15.7.2",
+		"sass": "^1.26.9",
+		"sass-loader": "^8.0.2",
+		"style-loader": "^0.23.1",
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.10",
+		"webpack-merge": "^4.2.2"
+	},
+	"dependencies": {
+		"classnames": "^2.2.6",
+		"lodash": "^4.17.15",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	}
+}

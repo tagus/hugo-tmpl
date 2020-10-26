@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica', sans-serif;
+    padding: 50px 100px;
+}
+
+.website {
+    &-title {
+        margin-bottom: 30px;
+    }
+    &-section:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+
+.react-app {
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #dff9fb;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>
+		{{- block "title" . -}}
+		{{ .Site.Title }} | {{ .Site.Params.Description }}
+		{{- end -}}
+	</title>
+	{{- partial "meta.html" . -}}
+	{{- partial "style.html" (dict "Context" . "Style" "sass/styles.scss") -}}
+	{{ if not .Site.IsServer }}
+		{{ template "_internal/google_analytics.html" . }}
+	{{ end }}
+</head>
+
+<body>
+	<div class="site-root">
+		{{- block "main" . -}}{{- end -}}
+	</div>
+</body>
+
+</html>

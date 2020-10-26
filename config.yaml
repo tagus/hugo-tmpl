@@ -1,0 +1,11 @@
+baseURL: "https://<some-url>.com"
+title: hugo-tmpl
+languageCode: "en-us"
+languageLang: en
+
+assetDir: assets
+
+googleAnalytics: <google-analytics-id>
+
+params:
+    description: Hugo Template Project

@@ -1,0 +1,70 @@
+name: website-deploy
+on:
+  push:
+    branches: [ master ]
+jobs:
+  # bundles javascript files for production and outputs
+  # them into the assets directory
+  js-bundle:
+    name: js bundle
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: yarn dependencies
+      run: |
+        cd ${{ github.workspace }}/js
+        yarn
+    - name: js build
+      run: |
+        cd ${{ github.workspace }}/js
+        yarn build
+    - uses: actions/upload-artifact@v1
+      with:
+        name: js-bundle
+        path: ${{ github.workspace }}/js/dist
+  # renders the hugo static site using the output of the
+  # js-bundle job. The static files are rendered to the public
+  # directory and exported to the workspace.
+  hugo-build:
+    name: hugo build
+    needs: js-bundle
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: download js-bundle
+      uses: actions/download-artifact@v1
+      with:
+        name: js-bundle
+        path: ${{ github.workspace }}/assets/js
+    - name: create public dir
+      run: mkdir ~/public
+    - uses: jakejarvis/hugo-build-action@v0.70.0
+      with:
+        args: --minify --log -d ~/public
+    - uses: actions/upload-artifact@v1
+      with:
+        name: hugo-bundle
+        path: ~/public
+  # deploys the public directory to github pages by pushing
+  # any changes to the public github pages repo; this job first clones the existing
+  # public pages repo and copies over any changes from the public directory
+  github-deploy:
+    name: github deploy
+    needs: hugo-build
+    runs-on: ubuntu-latest
+    steps:
+    - name: make public dir
+      run: mkdir -p ${{ github.workspace }}/public
+    - name: download hugo-bundle
+      uses: actions/download-artifact@v1
+      with:
+        name: hugo-bundle
+        path: ${{ github.workspace }}/public
+    - name: deploy changes to github pages
+      uses: sugatpoudel/git-deploy@v0.1
+      with:
+        changes: public
+        repository: git@github.com:<user>/<pages-repo>.git
+        ssh_key: ${{ secrets.WEBSITE_DEPLOY_KEY }}
+        name: <name>
+        email: <email>
