@@ -31,6 +31,9 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.jsx', '.js'],
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
 	},
 };

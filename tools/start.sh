@@ -14,14 +14,12 @@ start_server() {
 
 # builds dev js assets
 build_js() {
-    cd js
     yarn install
     yarn build:dev | awk '{ print "\033[0;94m[javascript]\033[0m " $0 }'
 }
 
 # a simple macro to start webpack watch
 start_js() {
-    cd js
     yarn watch | awk '{ print "\033[0;94m[javascript]\033[0m " $0 }'
 }
 

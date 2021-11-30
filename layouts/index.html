@@ -1,31 +1,32 @@
 {{ define "main" }}
-<h1 class="website-title">Hugo Template Project</h1>
+<div class="container">
+	<h1 class="font-l mb-r font-bold">Hugo Template Project</h1>
 
-<div class="website-section">
-	<h2 id="#javascript-with-react">javascript with react</h2>
-	<p>
-		This project adds js to hugo that is built using webpack and added
-		to the assets folder where it's discoverable by the hugo asset pipeline.
-	</p>
-	<div class="react-root"></div>
+	<div class="mb-m">
+		<h2 class="font-m mb-s font-semi-bold" id="#javascript-with-react">javascript with react</h2>
+		<p class="mb-s">
+			This project adds js to hugo that is built using webpack and added
+			to the assets folder where it's discoverable by the hugo asset pipeline.
+		</p>
+		<div class="react-root"></div>
+	</div>
+
+	<div class="mb-m">
+		<h2 class="font-m mb-s font-semi-bold">custom url page</h2>
+		<p class="mb-s">
+			custom urls can be supported with one off templates that allow
+			for single page customization.
+		</p>
+		<a href="/my-custom-url">custom url page</a>
+	</div>
+
+	<div class="mb-m">
+		<h2 class="font-m mb-s font-semi-bold">github pages support</h2>
+		<p>
+			This repo can easily be set up to be deployed to a github pages
+			repo where it can be statically served by github.
+		</p>
+	</div>
 </div>
-
-<div class="website-section">
-	<h2>custom url page</h2>
-	<p>
-		custom urls can be supported with one off templates that allow
-		for single page customization.
-	</p>
-	<a href="/my-custom-url">custom url page</a>
-</div>
-
-<div class="website-section">
-	<h2>github pages support</h2>
-	<p>
-		This repo can easily be set up to be deployed to a github pages
-		repo where it can be statically served by github.
-	</p>
-</div>
-
 {{- partial "script.html" (dict "Context" . "Script" "js/home.js") -}}
 {{ end }}

@@ -11,7 +11,7 @@ function App() {
 	});
 
 	return (
-		<div className="react-app">
+		<div className="react-app p-l">
 			<h3>👋 from react at {time}</h3>
 		</div>
 	);

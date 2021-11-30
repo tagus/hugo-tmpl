@@ -6,7 +6,7 @@ module.exports = merge(common, {
 	mode: 'development',
 	devtool: 'inline-source-map',
 	output: {
-		path: path.resolve(__dirname, '..', 'assets', 'js'),
+		path: path.resolve(__dirname, 'assets', 'js'),
 		filename: '[name].js',
 	},
 });

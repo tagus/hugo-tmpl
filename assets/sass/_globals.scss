@@ -1,0 +1,80 @@
+$font-factor: 1;
+$font-family: 'Helvetica', sans-serif;
+
+$line-height: 1.33;
+
+// breakpoints
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+
+// sizes
+$sizes: (
+  3xl: 2.5rem,
+  2xl: 2rem,
+  xl: 1.75rem,
+  l: 1.5rem,
+  m: 1.25rem,
+  r: 1rem,
+  s: 0.5rem,
+  xs: 0.25rem,
+);
+
+@each $label, $size in $sizes {
+  .font-#{$label} {
+    font-size: $size;
+    font-size: $size * $font-factor;
+  }
+
+  .mb-#{$label} {
+    margin-bottom: $size;
+  }
+
+  .mt-#{$label} {
+    margin-top: $size;
+  }
+
+  .p-#{$label} {
+    padding: $size;
+  }
+}
+
+$text-align: (left: left, right: right, center: center);
+@each $label, $align in $text-align {
+  .text-#{$label} {
+    text-align: $align;
+  }
+}
+
+$font-weights: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+);
+@each $label, $weight in $font-weights {
+  .font-#{$label} {
+    font-weight: $weight;
+  }
+}
+
+body {
+    font-family: $font-family;
+}
+
+p {
+    @extend .font-r;
+    line-height: $line-height;
+}
+
+.container {
+  padding: 0 1.25rem;
+
+  @media (min-width: $md) {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
