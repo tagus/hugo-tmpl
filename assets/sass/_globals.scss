@@ -60,6 +60,20 @@ $font-weights: (
   }
 }
 
+$justify-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  space-between: space-between,
+  space-around: space-around,
+  space-evenly: space-evenly,
+);
+@each $label, $justify in $justify-content {
+  .justify-#{$label} {
+    justify-content: $justify;
+  }
+}
+
 body {
     font-family: $font-family;
 }
@@ -77,4 +91,14 @@ p {
     margin: 0 auto;
     padding: 0;
   }
+}
+
+.list-decimal {
+  list-style-type: decimal;
+  margin-left: 1.25rem;
+}
+
+.list-disc {
+  list-style-type: disc;
+  margin-left: 1.25rem;
 }
