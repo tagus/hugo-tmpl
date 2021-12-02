@@ -12,16 +12,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: yarn dependencies
       run: |
-        cd ${{ github.workspace }}/js
         yarn
     - name: js build
       run: |
-        cd ${{ github.workspace }}/js
         yarn build
     - uses: actions/upload-artifact@v1
       with:
         name: js-bundle
-        path: ${{ github.workspace }}/js/dist
+        path: ${{ github.workspace }}/dist
   # renders the hugo static site using the output of the
   # js-bundle job. The static files are rendered to the public
   # directory and exported to the workspace.
